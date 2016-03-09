@@ -1,0 +1,84 @@
+<%= form_for @business, html: { multipart: true } do |f| %>
+	<% if @business.errors.any? %>
+		<h2><%= pluralize(@business.errors.count, "error") %> prevented this post from saving:</h2>
+		<ul>
+			<% @business.errors.full_messages.each do |msg| %>
+				<li><%= msg %></li>
+			<% end %>
+	<% end %>
+
+	<%= f.label :name %><br>
+	<%= f.text_field :name %>
+	
+	<br>
+	<br>
+
+	<%= f.label :address %><br>
+	<%= f.text_field :address %>
+	
+	<br>
+	<br>
+	
+	<%= f.label :city %><br>
+	<%= f.text_field :city %>
+	
+	<br>
+	<br>
+	
+	<%= f.label :postal %><br>
+	<%= f.text_field :postal %>
+	
+	<br>
+	<br>
+	
+	<%= f.label :email %><br>
+	<%= f.text_field :email %>
+	
+	<br>
+	<br>
+	
+	<%= f.label :phone %><br>
+	<%= f.text_field :phone %>
+	
+	<br>
+	<br>
+	
+	<%= f.label :url %><br>
+	<%= f.text_field :url %>
+	
+	<br>
+	<br>
+	
+	<%= f.label :description, "Write the business description" %><br>
+	<%= f.text_area :description %>
+	
+	<br>
+	<br>
+	
+	<%= f.label :keywords %><br>
+	<%= f.text_field :keywords %>
+	
+	<br>
+	<br>
+	
+	<%= f.label :logo %><br>
+	<%= f.file_field :logo %>
+	
+	<br>
+	<br>
+	
+	<%= f.label :audio %><br>
+	<%= f.text_field :audio %>
+	
+	<br>
+	<br>
+	
+	<%= f.label :category %><br>
+	<%= f.collection_select :category_id, Category.all, :id, :name %>
+	
+	<br>
+	<br>
+	
+	<%= f.submit %>
+	
+<% end %>

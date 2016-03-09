@@ -1,0 +1,21 @@
+.admin {
+	.add_client, .add_category, .list_clients {
+		float: left;
+		text-align: center;
+	}
+	
+	.add_client {
+		width: 33.33%;
+		padding: 0 2.5%;
+	}
+	
+	.add_category {
+		width: 33.33%;
+		padding: 0 2.5%;
+	}
+	
+	.list_clients {
+		width: 33.33%;
+		padding: 0 2.5%;
+	}
+}

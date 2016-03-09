@@ -1,0 +1,123 @@
+			<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+			<script type="text/javascript">
+			            // When the window has finished loading create our google map below
+			            google.maps.event.addDomListener(window, 'load', init);
+        
+			            function init() {
+			                // Basic options for a simple Google Map
+			                // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
+			                var mapOptions = {
+			                    // How zoomed in you want the map to start at (always required)
+			                    zoom: 13,
+
+			                    // The latitude and longitude to center the map (always required)
+			                    center: new google.maps.LatLng(53.4656616, -113.4842686),
+													
+													// Disable default map options 
+													disableDefaultUI: true,
+
+			                    // How you would like to style the map. 
+			                    // This is where you would paste any style found on Snazzy Maps.
+			                    styles: [{"featureType":"water","stylers":[{"visibility":"on"},{"color":"#b5cbe4"}]},{"featureType":"landscape","stylers":[{"color":"#efefef"}]},{"featureType":"road.highway","elementType":"geometry","stylers":[{"color":"#83a5b0"}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#bdcdd3"}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#ffffff"}]},{"featureType":"poi.park","elementType":"geometry","stylers":[{"color":"#e3eed3"}]},{"featureType":"administrative","stylers":[{"visibility":"on"},{"lightness":33}]},{"featureType":"road"},{"featureType":"poi.park","elementType":"labels","stylers":[{"visibility":"on"},{"lightness":20}]},{},{"featureType":"road","stylers":[{"lightness":20}]}]
+			                };
+
+			                // Get the HTML DOM element that will contain your map 
+			                // We are using a div with id="map" seen below in the <body>
+			                var mapElement = document.getElementById('map');
+
+			                // Create the Google Map using our element and options defined above
+			                var map = new google.maps.Map(mapElement, mapOptions);
+
+			                // Let's also add a marker while we're at it
+											var image = 'map_pin.png';
+			                var marker = new google.maps.Marker({
+			                    position: new google.maps.LatLng(53.4656616, -113.4842686),
+			                    map: map,
+													icon: image,
+			                    title: 'Capital Jeep Dodge'
+			                });
+			            }
+			        </script>
+		</header>		
+
+		<h1 id="page_title"><%= @business.name %></h1>
+		
+		<div class="wrapper wrapper_padding business clearfix">
+			
+			<div class="col-1 contact_info business_content">
+				<%= image_tag @business.logo.url(:medium), :class => "business_logo" %>
+				<h3 class="location"><%= @business.address %></h3>
+				<h3 class="location"><%= @business.city %></h3><br>
+				Phone: <%= @business.phone %><br>
+				Email: <%= @business.email %><br>
+				Website: <%= link_to @business.url, "http://#{@business.url}" %><br>
+				<hr>
+				<input type="submit" value="&#9658; Our Latest Commercial" class="button">
+			</div>
+			
+			<div class="col-2 business_content">
+				<h2>About Us</h2>
+				<hr>
+				<p><%= markdown @business.description %></p>
+				<% if user_signed_in? %>
+					<div id="admin_links">
+						<%= link_to "Edit Business", edit_business_path(@business) %>
+						<%= link_to "Delete Business", business_path(@business), method: :delete, data: { confirm: "Are you sure you want to delete this business?" } %>
+					</div>
+				<% end %>
+			</div>
+			
+			<div class="col-3 search business_content">
+				<h2>Search For A Business</h2>
+				<hr>
+				<form>
+					<h6>Search By Category</h6>
+					<select name='category' id="category">
+						<option value="value1">Apparel</option>
+						<option value="value2">Automotive</option>
+					</select>
+				</form>
+				<form>	
+					<h6>Search Alphabetically</h6>
+					<select name='alphabet' id="alphabet">
+						<option value="value1">A</option>
+						<option value="value2">B</option>
+						<option value="value3">C</option>
+						<option value="value4">D</option>
+						<option value="value5">E</option>
+						<option value="value6">F</option>
+						<option value="value7">G</option>
+						<option value="value8">H</option>
+						<option value="value9">I</option>
+						<option value="value10">J</option>
+						<option value="value11">K</option>
+						<option value="value12">L</option>
+						<option value="value13">M</option>
+						<option value="value14">N</option>
+						<option value="value15">O</option>
+						<option value="value16">P</option>
+						<option value="value17">Q</option>
+						<option value="value18">R</option>
+						<option value="value19">S</option>
+						<option value="value20">T</option>
+						<option value="value21">U</option>
+						<option value="value22">V</option>
+						<option value="value23">W</option>
+						<option value="value24">X</option>
+						<option value="value25">Y</option>
+						<option value="value26">Z</option>
+					</select>
+				</form>
+				<h6>Search By Name</h6>
+					<%= form_tag search_businesses_path, method: :get, role: "search" do %>
+						<p>
+							<%= text_field_tag :search, params[:search], class: "form-control", :placeholder => 'Search Businesses' %>
+							<%= submit_tag ">", name: nil, class: "button" %>
+						</p>
+					<% end %>
+				
+			</div>
+		</div>
+	
+		<div id="map"></div>
+		  

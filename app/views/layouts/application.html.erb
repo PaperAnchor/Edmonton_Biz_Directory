@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>The Edmonton Biz Directory | Corus Radio Edmonton</title>
+	<link href='https://fonts.googleapis.com/css?family=Raleway:400,500,600,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesgit ome.min.css">
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<header id= "main_navigation" class="clearfix">
+	<div id="leftHeader">
+		<%= link_to image_tag('logo_biz.png'), root_path %>
+	</div>
+	<div id="rightHeader">
+		<nav>
+			<%= link_to "Home", root_path %>
+			<%= link_to "Business Listings", businesses_path %>
+			<%= link_to "Contact", new_contact_path %>
+			<% if user_signed_in? %>
+				<a href="#">Admin</a>
+				<%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+			<% end %>
+		</nav>
+		<%= form_tag search_businesses_path, method: :get, role: "search" do %>
+			<p>
+				<%= text_field_tag :search, params[:search], class: "form-control", :placeholder => 'Search Businesses' %>
+				<%= submit_tag ">", name: nil, class: "button" %>
+			</p>
+		<% end %>
+	</div>
+</header>
+
+<% if notice %>
+	<p class="notice"><%= notice %></p>
+<% elsif alert %>
+	<p class="alert"><%= alert %></p>
+<% end %>
+
+<%= yield %>
+
+<footer id="main_footer">
+	<p class="copyright">
+		&copy; 2016 PaperAnchor Creative Studio  |  All Rights Reserved
+	</p>
+	<nav>
+		<a href="#"><i class="fa fa-facebook"></i></a>
+		<a href="#"><i class="fa fa-twitter"></i></a>
+		<a href="#"><i class="fa fa-instagram"></i></a>
+		<a href="#"><i class="fa fa-youtube-play"></i></a>
+	</nav>
+</footer>
+</body>
+</html>

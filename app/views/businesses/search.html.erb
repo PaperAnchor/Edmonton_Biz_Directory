@@ -1,0 +1,77 @@
+		<h1 id="page_title">Business Listings</h1>
+		
+		<div class="wrapper wrapper_padding clearfix">
+			<div class="category_wrapper">
+				
+				
+				<% @businesses.each do |business| %>
+					<div class="category_listing clearfix">
+						<%= image_tag business.logo.url(:medium), :class => "listing_logo" %>
+						<div class="listing_description clearfix">
+							<h2><%= link_to business.name, business %></h2>
+							<p><%=h truncate(business.description, :length => 200, :separator => ' ') %></p>
+							<p><span class="contact_method"><strong>Phone:</strong> <%= business.phone %></span>		<span class="contact_method"><strong>Email:</strong> <%= business.email %></span>		<strong>Website:</strong> <%= link_to business.url, "http://#{business.url}" %></p>
+							<%= link_to "More Details", business, class: "button" %>
+						</div>
+					</div>
+					<hr>
+				<% end %>
+				
+				
+				<%= will_paginate @posts %>
+			</div>
+				
+
+			
+			<div class="search_wrapper">
+			<h2>Search For A Business</h2>
+			<hr>
+			<form>
+				<h6>Search By Category</h6>
+				<select name='category' id="category">
+					<option value="value1">Apparel</option>
+					<option value="value2">Automotive</option>
+				</select>
+			</form>
+			<form>
+				<h6>Search Alphabetically</h6>
+				<select name='alphabet' id="alphabet">
+					<option value="value1">A</option>
+					<option value="value2">B</option>
+					<option value="value3">C</option>
+					<option value="value4">D</option>
+					<option value="value5">E</option>
+					<option value="value6">F</option>
+					<option value="value7">G</option>
+					<option value="value8">H</option>
+					<option value="value9">I</option>
+					<option value="value10">J</option>
+					<option value="value11">K</option>
+					<option value="value12">L</option>
+					<option value="value13">M</option>
+					<option value="value14">N</option>
+					<option value="value15">O</option>
+					<option value="value16">P</option>
+					<option value="value17">Q</option>
+					<option value="value18">R</option>
+					<option value="value19">S</option>
+					<option value="value20">T</option>
+					<option value="value21">U</option>
+					<option value="value22">V</option>
+					<option value="value23">W</option>
+					<option value="value24">X</option>
+					<option value="value25">Y</option>
+					<option value="value26">Z</option>
+				</select>
+			</form>
+				<h6>Search By Name</h6>
+				<%= form_tag search_businesses_path, method: :get, role: "search" do %>
+					<p>
+						<%= text_field_tag :search, params[:search], class: "form-control", :placeholder => 'Search Businesses' %>
+						<%= submit_tag ">", name: nil, class: "button" %>
+					</p>
+				<% end %>
+			
+		</div>	   
+	</div>	
+		</div>
