@@ -1,10 +1,28 @@
+		<style>
+			body {
+				background-image: url(/assets/mainBG.jpg);
+				background-repeat: no-repeat;
+				background-position: top;
+				-ms-background-size: contain;
+				-o-background-size: contain;
+				-moz-background-size: contain;
+				-webkit-background-size: contain;
+				background-size: contain;
+			}
+		</style>
 		<div class="jumbotron">
 			<h1>HEAR SOMETHING YOU LIKED?</h1>
 			<h2>Find out more about our advertisers and get in contact with<br />
 them fast with the Edmonton Business Directory!</h2>
+			<div class="header_search">
+				<form>
+					 <input type="input" name="businesssearch" id="search" placeholder="Search Our Listings By Business Name">
+					 <button type="submit"><i class="fa fa-search"></i></button>
+				</form>
+			</div>
 		</div>
-		
-		<div class="wrapper wrapper_padding clearfix">
+
+		<div class="wrapper wrapper_padding wrapper_home clearfix">
 			<div class="col-1 about homepage_content">
 				<h2>What is the Biz Directory</h2>
 				<hr>
@@ -59,7 +77,7 @@ them fast with the Edmonton Business Directory!</h2>
 							<%= submit_tag ">", name: nil, class: "button" %>
 						</p>
 					<% end %>
-				
+
 			</div>
 			<div class="col-3 who homepage_content">
 				<h2>Who Are We?</h2>

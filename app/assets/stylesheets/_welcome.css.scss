@@ -1,38 +1,57 @@
 .jumbotron {
 	width: 100%;
-	height: 500px;
-	margin: -38px auto 0 auto;
+	margin: 0 auto;
 	text-align: center;
-	background-image: image-url('bg_jumbotron_01.jpg');
-	background-repeat: no-repeat;
-	background-position: center;
-	-ms-background-size: cover;
-	-o-background-size: cover;
-	-moz-background-size: cover;
-	-webkit-background-size: cover;
-	background-size: cover;
-	h1, h2 {
-		position: relative;
-		top: 45%;
-		transform: translateY(-50%);
-	}
+	padding:  35px 0 80px 0;
 	h1 {
-		font-size: 3.5rem;
-		margin-bottom: 10px;
+		font-size: 3rem;
 	}
 	h2 {
 		font-size: 1.5rem;
 		font-weight: 300;
 		line-height: 1.5em;
-		color: $brown;
+		color: $highlight;
 	}
+}
+
+.header_search {
+    text-align: center;
+    max-width: 580px;
+    height: 50px;
+    margin: 40px auto 24px auto;
+    border-radius: 25px;
+    background-color: $highlight;
+    #search {
+        width: 85%;
+        height: 35px;
+		color: $medium;
+        padding: 0 0 0 10px;
+        position: relative;
+        top: 50%;
+        transform: translateY(-5%);
+        border: 1px solid #24a290;
+        &:focus {
+            outline: none; /* overrides chrome default focus outline */
+        }
+    }
+    button[type=submit] {
+        font-size: 1.5rem;
+        padding:5px;
+        margin: 5px;
+        background-color: transparent;
+        color: $white;
+        border:0 none;
+        &:focus {
+            outline: none; /* overrides chrome default focus outline */
+        }
+    }
 }
 
 .col-1, .col-2, .col-3 {
 	float: left;
-}	
+}
 
-.about {	
+.about {
 	width: 45%;
 	padding: 0 2.5% 0 0;
 }
@@ -96,6 +115,12 @@
 	}
 }
 
+.wrapper_home {
+	width: 100%;
+	background-color: $white;
+	padding: 4rem;
+}
+
 .search {
 	#category {
 		width: 80%;
@@ -108,7 +133,7 @@
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-		background: url(../assets/down_arrow.png) $light no-repeat right;	
+		background: url(../assets/down_arrow.png) $light no-repeat right;
 		option {
 			padding: 10px 10px;
 		}
@@ -141,8 +166,8 @@
 		color: $medium;
 	}
 	#submit {
-    padding:10px 15px 10px 15px; 
-		background: url(../assets/right_arrow.png) $light no-repeat right;	
+    padding:10px 15px 10px 15px;
+		background: url(../assets/right_arrow.png) $light no-repeat right;
     border:none;
     cursor:pointer;
     -webkit-border-radius: 5px;

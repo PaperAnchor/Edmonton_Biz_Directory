@@ -47,4 +47,4 @@
 		- Alphabetical#index
     - Businesses#show
 		- Categories#index
-    - Contact
+    - Contact# Edmonton_Biz_Directory
