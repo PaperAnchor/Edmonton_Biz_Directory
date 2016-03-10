@@ -22,70 +22,55 @@ them fast with the Edmonton Business Directory!</h2>
 			</div>
 		</div>
 
-		<div class="wrapper wrapper_padding wrapper_home clearfix">
-			<div class="col-1 about homepage_content">
-				<h2>What is the Biz Directory</h2>
-				<hr>
-				<p>Nihil poutine esse ex squid. Excepteur 3 wolf moon nulla odio humblebrag. Gastropub sed deep v synth art party. Affogato twee <a href="#">brooklyn</a>, aliqua 				bushwick placeat four dollar toast pitchfork et meggings wayfarerspost-ironic narwhal.Normcore intelligentsia austin humblebrag drinking vinegar assumenda.</p>
+		<section id="content">
+            <div class="wrapper clearfix">
 
-				<p>Sriracha voluptate four dollar toast, migas heirloom reprehenderit whatever butcher you probably haven't heard of them freegan yr duis kickstarter chartreuse. Neutra meggings kombucha, bespoke esse four loko veniam enim helvetica gluten-free locavore.</p>
-				<a href="#"><img src="/assets/logo_cisn.png" /></a><a href="#"><img src="/assets/logo_ched.png" /></a><a href="#"><img src="/assets/logo_fresh.png" /></a><a href="#"><img src="/assets/logo_chqt.png" style="padding-left: 20px;" /></a>
-			</div>
-			<div class="col-2 search homepage_content">
-				<h2>Search For A Business</h2>
+            <div class="main_content">
+				<h1>Business Listings</h1>
 				<hr>
-				<form>
-					<h6>Search By Category</h6>
-					<select name='category' id="category">
-						<option value="value1">Apparel</option>
-						<option value="value2">Automotive</option>
-					</select>
-					<h6>Search Alphabetically</h6>
-					<select name='alphabet' id="alphabet">
-						<option value="value1">A</option>
-						<option value="value2">B</option>
-						<option value="value3">C</option>
-						<option value="value4">D</option>
-						<option value="value5">E</option>
-						<option value="value6">F</option>
-						<option value="value7">G</option>
-						<option value="value8">H</option>
-						<option value="value9">I</option>
-						<option value="value10">J</option>
-						<option value="value11">K</option>
-						<option value="value12">L</option>
-						<option value="value13">M</option>
-						<option value="value14">N</option>
-						<option value="value15">O</option>
-						<option value="value16">P</option>
-						<option value="value17">Q</option>
-						<option value="value18">R</option>
-						<option value="value19">S</option>
-						<option value="value20">T</option>
-						<option value="value21">U</option>
-						<option value="value22">V</option>
-						<option value="value23">W</option>
-						<option value="value24">X</option>
-						<option value="value25">Y</option>
-						<option value="value26">Z</option>
-					</select>
-					</form>
-					<h6>Search By Name</h6>
-					<%= form_tag search_businesses_path, method: :get, role: "search" do %>
-						<p>
-							<%= text_field_tag :search, params[:search], class: "form-control", :placeholder => 'Search Businesses' %>
-							<%= submit_tag ">", name: nil, class: "button" %>
-						</p>
-					<% end %>
+				<% @businesses.each do |business| %>
+					<div class="category_listing clearfix">
+						<%= image_tag business.logo.url(:medium), :class => "listing_logo" %>
+						<div class="listing_description">
+							<h2><%= link_to business.name, business %></h2>
+							<p><%=h truncate(business.description, :length => 200, :separator => ' ') %></p>
+							<p><span class="contact_method"><strong>Phone:</strong> <%= business.phone %></span>		<span class="contact_method"><strong>Email:</strong> <%= business.email %></span>		<strong>Website:</strong> <%= link_to business.url, "http://#{business.url}" %></p>
+							<%= link_to "More Details", business, class: "button" %>
+						</div>
+					</div>
+					<br>
+					<hr class="hr_wide">
+				<% end %>
 
-			</div>
-			<div class="col-3 who homepage_content">
-				<h2>Who Are We?</h2>
-				<hr>
-				<p>Corus Radio Edmonton is a powerhouse is the Canadian radio market. With 4 stations in a market of 28, we 				still manage to stay in the top 5 for our 				demographics.</p>
-				<h2 class="second_header">Want To Advertise With Us?</h2>
-				<hr>
-				<p>You can more information about many of our friends. Details about what they offer. And you may even hear 				one or two commercials that deserve closer attention.</p>
-					<%= link_to "Contact Us", new_contact_path, class: "button" %>
-			</div>
-		</div>
+            </div>
+
+            <div class="side_content">
+                <div class="bigbox"><img src="images/BigBox.jpg" alt="BigBox" /></div>
+                <h1>Search For A Business</h1>
+                <hr>
+                <form class="search">
+                    <p class="category">
+						<%= form_for :category do |f| %>
+							<%= f.label :category, "Search By Category" %><br>
+							<%= f.collection_select :category_id, Category.all, :id, :name %>
+							<br>
+							<br>
+							<%= f.label :name, "Search By Business Name" %><br>
+							<%= f.text_field :name, placeholder: "Type your search" %>
+						<% end %>
+                    </p>
+                </form>
+                <h1>What Is The Biz Directory?</h1>
+                <hr>
+                <p>We know how it goes...you hear about a great business on the radio, but you can't quite catch their name or contact information. That's why we developed the Biz Directory!</p>
+                <p>This is a way for you to find out more about businesses with great stories, great product and great offers. You'll also find a quick and easy way to contact these places and more!</p>
+                <ul class="station_logos">
+                    <li><a href="http://www.cisnfm.com" target="_blank"><img class="station" src="images/logo_cisn.png" alt="CISN Country 103.9"></a></li>
+                    <li><a href="http://www.630ched.com" target="_blank"><img class="station" src="images/logo_ched.png" alt="630 CHED"></a></li>
+                    <li><a href="http://www.925freshradio.ca" target="_blank"><img class="station" src="images/logo_fresh.png" alt="92.5 Fresh Radio"></a></li>
+                    <li><a href="http://www.inews880.com" target="_blank"><img class="station" src="images/logo_chqt.png" alt="iNews880"></a></li>
+                </ul>
+            </div>
+
+            </div>
+        </section>

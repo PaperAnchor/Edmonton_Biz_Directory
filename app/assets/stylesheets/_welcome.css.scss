@@ -1,3 +1,10 @@
+.hr_wide {
+	width: 100%;
+	border: none;
+	border-top: 1px solid $light;
+	margin: 1.5rem 0;
+}
+
 .jumbotron {
 	width: 100%;
 	margin: 0 auto;
@@ -66,6 +73,149 @@
 	padding: 0 2.5%;
 }
 
+/*   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -
+CONTENT STYLES
+-   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   */
+#content {
+    padding: 30px 0;
+	background-color: $white;
+    ul li {
+        list-style-type: none;
+        display: inline;
+    }
+}
+.main_content, .side_content {
+    h1 {
+        font-size: 1.6rem;
+        font-weight: 700;
+		color: $dark;
+    }
+}
+
+.main_content {
+	width: 75%;
+    float: left;
+    .business_divider {
+        width: 90%;
+        height: 1px;
+        background-color: $light;
+        margin: 40px 0;
+        border: none;
+    }
+}
+
+.category_listing {
+	margin-top: 35px;
+	.listing_logo, .listing_desciption {
+		float: left;
+	}
+	h2 {
+		text-transform: uppercase;
+		font-size: 1.3rem;
+		margin: 0 0 6px 0;
+	}
+	.listing_logo {
+		width: 20%;
+		max-width: 150px;
+		max-height: 150px;
+		padding: 0;
+		border: 1px solid $medium;
+		border-radius: 8px;
+		float: left;
+	}
+	.listing_description {
+		width: 80%;
+		float: right;
+		text-align: left;
+		p {
+			font-size: 1rem;
+			line-height: 1.4em;
+			margin: 0 0 5px 0;
+			.contact_method {
+				padding: 0 20px 0 0;
+			}
+		}
+		.button {
+			background-color: $highlight;
+			border: none;
+			color: #fff;
+			padding: 7px 38px;
+			text-align: center;
+			text-decoration: none;
+				text-transform: uppercase;
+			display: inline-block;
+			font-size: .8em;
+				border-radius: 8px;
+				margin-top: 10px;
+				&:hover {
+					background-color: $light;
+					color: $brown;
+				}
+		}
+	}
+}
+
+.side_content {
+    width: 25%;
+    text-align: center;
+    float: right;
+    hr {
+            margin: 0 auto 20px auto;
+    }
+    p {
+        line-height: 1.7rem;
+    }
+}
+
+.bigbox {
+    width: 300px;
+    height: 250px;
+    margin: 10px auto 40px auto;
+    background-color: $highlight;
+}
+
+.search {
+    margin: 0 0 50px 0;
+    label {
+        color: $highlight;
+        font-size: .9rem;
+        text-transform: uppercase;
+        font-weight: 700;
+     }
+    select, input[type=text] {
+        background-color: $light;
+        border: none;
+        width: 80%;
+        border-radius: 5px;
+        color: #ababab;
+        text-transform: uppercase;
+        font-weight: 600;
+        font-size: .85rem;
+        margin: 15px 0 0 0;
+        transition: ease-in-out, width .35s ease-in-out;
+    &:focus {
+            width: 85%;
+            outline: none;
+        }
+    }
+    input[type=text] {
+        padding: 10px 5px 10px 30px;
+    }
+    select {
+        padding: 5px 5px 5px 30px;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+    }
+}
+.station_logos {
+    text-align: center;
+    padding: 0;
+    .station {
+        max-width: 70px;
+        padding: 0 0 0 10px;
+    }
+}
 
 .homepage_content {
 	h2 {

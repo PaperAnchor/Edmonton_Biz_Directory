@@ -18,6 +18,13 @@ body {
 	background-color: $extralight;
 }
 
+hr {
+    width: 50px;
+    border: 1px solid $highlight;
+    margin: 0 0 20px 0;
+    padding: 0;
+}
+
 .wrapper {
 	width: 90%;
 	margin: 0 auto;
@@ -101,17 +108,48 @@ p, ul, ol {
 		float: left;
 	}
 	#rightHeader {
-	float: right;
-	nav {
+		float: right;
+		nav {
 			float: left;
 			padding-top: 1.1rem;
-			a {
-				color: $white;
-				text-decoration: none;
-				margin: 0 1rem;
-				font-size: .85rem;
-				&:hover {
-					color: $highlight;
+			ul {
+				position:relative;
+				li {
+					list-style-type: none;
+					display: inline;
+					position:relative;
+					a {
+						color: $white;
+						text-decoration: none;
+						margin: 0 1rem;
+						font-size: .85rem;
+						&:hover {
+							color: $highlight;
+						}
+					}
+				}
+			}
+		}
+		ul ul {
+			display:none;
+			position:absolute;
+			width: 200px;
+			top: 100%;
+			left: 0;
+			background-color: transparent;
+			padding:10px 0 0 0;
+		}
+		ul {
+			li {
+				&:hover > ul{
+					display: block;
+				}
+				ul li {
+					width:200px;
+					display: block;
+					a {
+						padding:15px 0;
+					}
 				}
 			}
 		}

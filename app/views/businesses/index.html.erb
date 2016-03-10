@@ -1,8 +1,8 @@
 		<h1 id="page_title">Business Listings</h1>
-		
+
 		<div class="wrapper wrapper_padding clearfix">
 			<div class="category_wrapper">
-				
+
 				<% @businesses.shuffle.each do |business| %>
 					<div class="category_listing clearfix">
 						<%= image_tag business.logo.url(:medium), :class => "listing_logo" %>
@@ -15,13 +15,13 @@
 					</div>
 					<hr>
 				<% end %>
-				
-				
+
+
 				<%= will_paginate @posts %>
 			</div>
-				
 
-			
+
+
 			<div class="search_wrapper">
 			<h2>Search For A Business</h2>
 			<hr>
@@ -70,6 +70,6 @@
 						<%= submit_tag ">", name: nil, class: "button" %>
 					</p>
 				<% end %>
-		</div>	   
-	</div>	
+		</div>
+	</div>
 		</div>
