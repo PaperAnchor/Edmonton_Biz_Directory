@@ -52,7 +52,11 @@
 				Email: <%= @business.email %><br>
 				Website: <%= link_to @business.url, "http://#{@business.url}" %><br>
 				<hr>
-				<input type="submit" value="&#9658; Our Latest Commercial" class="button">
+				<h6>Listen To Our Latest Commercial</h6>
+				<audio controls>
+					<source src="<%= @business.audio %>" type="audio/mpeg">
+					Your browser does not support the audio element.
+				</audio>
 			</div>
 
 			<div class="col-2 business_content">

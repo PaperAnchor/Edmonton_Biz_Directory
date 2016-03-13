@@ -38,7 +38,7 @@ class BusinessesController < ApplicationController
 
   def update
     if @business.update post_params
-      redirect_to @business, notice: "Yay! The business info has been updated!"
+      redirect_to @business, notice: "Success! The business info has been updated!"
     else
       render 'edit'
     end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160313030047) do
+ActiveRecord::Schema.define(version: 20160313034557) do
 
   create_table "businesses", force: :cascade do |t|
     t.string   "name"
@@ -24,8 +24,8 @@ ActiveRecord::Schema.define(version: 20160313030047) do
     t.string   "logo"
     t.string   "audio"
     t.string   "category_id"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.string   "slug"
     t.string   "logo_file_name"
     t.string   "logo_content_type"
@@ -33,6 +33,10 @@ ActiveRecord::Schema.define(version: 20160313030047) do
     t.datetime "logo_updated_at"
     t.float    "latitude"
     t.float    "longitude"
+    t.string   "audio_file_name"
+    t.string   "audio_content_type"
+    t.integer  "audio_file_size"
+    t.datetime "audio_updated_at"
   end
 
   add_index "businesses", ["slug"], name: "index_businesses_on_slug", unique: true
