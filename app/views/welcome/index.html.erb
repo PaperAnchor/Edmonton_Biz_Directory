@@ -34,7 +34,7 @@ them fast with the Edmonton Business Directory!</h2>
 						<div class="listing_description">
 							<h2><%= link_to business.name, business %></h2>
 							<p><%=h truncate(business.description, :length => 200, :separator => ' ') %></p>
-							<p><span class="contact_method"><strong>Phone:</strong> <%= business.phone %></span>		<span class="contact_method"><strong>Email:</strong> <%= business.email %></span>		<strong>Website:</strong> <%= link_to business.url, "http://#{business.url}" %></p>
+							<p><span class="contact_method"><strong>Phone:</strong> <%= business.phone %></span><span class="contact_method"><strong>Email:</strong> <%= business.email %></span>		<strong>Website:</strong> <%= link_to business.url, "http://#{business.url}" %></p>
 							<%= link_to "More Details", business, class: "button" %>
 						</div>
 					</div>
@@ -45,7 +45,7 @@ them fast with the Edmonton Business Directory!</h2>
             </div>
 
             <div class="side_content">
-                <div class="bigbox"><img src="images/BigBox.jpg" alt="BigBox" /></div>
+                <div class="bigbox"><%= image_tag("bigBox.jpg", :alt => "Big Box") %></div>
                 <h1>Search For A Business</h1>
                 <hr>
                 <form class="search">
@@ -65,10 +65,10 @@ them fast with the Edmonton Business Directory!</h2>
                 <p>We know how it goes...you hear about a great business on the radio, but you can't quite catch their name or contact information. That's why we developed the Biz Directory!</p>
                 <p>This is a way for you to find out more about businesses with great stories, great product and great offers. You'll also find a quick and easy way to contact these places and more!</p>
                 <ul class="station_logos">
-                    <li><a href="http://www.cisnfm.com" target="_blank"><img class="station" src="images/logo_cisn.png" alt="CISN Country 103.9"></a></li>
-                    <li><a href="http://www.630ched.com" target="_blank"><img class="station" src="images/logo_ched.png" alt="630 CHED"></a></li>
-                    <li><a href="http://www.925freshradio.ca" target="_blank"><img class="station" src="images/logo_fresh.png" alt="92.5 Fresh Radio"></a></li>
-                    <li><a href="http://www.inews880.com" target="_blank"><img class="station" src="images/logo_chqt.png" alt="iNews880"></a></li>
+                    <li><%= link_to image_tag("logo_cisn.png", :alt => "CISN Country 103.9") %></li>
+                    <li><a href="http://www.630ched.com" target="_blank"><%= image_tag("logo_ched.png", :alt => "630 CHED") %></a></li>
+                    <li><a href="http://www.925freshradio.ca" target="_blank"><%= image_tag("logo_fresh.png", :alt => "925 Fresh Radio") %></a></li>
+                    <li><a href="http://www.inews880.com" target="_blank"><%= image_tag("logo_chqt.png", :alt => "iNews 880") %></a></li>
                 </ul>
             </div>
 
