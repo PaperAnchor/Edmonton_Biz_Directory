@@ -11,13 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160131201335) do
+ActiveRecord::Schema.define(version: 20160313030047) do
 
   create_table "businesses", force: :cascade do |t|
     t.string   "name"
     t.string   "address"
-    t.string   "city"
-    t.string   "postal"
     t.string   "email"
     t.string   "phone"
     t.string   "url"
@@ -33,6 +31,8 @@ ActiveRecord::Schema.define(version: 20160131201335) do
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   add_index "businesses", ["slug"], name: "index_businesses_on_slug", unique: true

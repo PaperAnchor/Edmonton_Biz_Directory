@@ -2,7 +2,8 @@
 			<script type="text/javascript">
 			            // When the window has finished loading create our google map below
 			            google.maps.event.addDomListener(window, 'load', init);
-        
+						google.maps.event.addDomListener(window, 'page:load', initialize);
+
 			            function init() {
 			                // Basic options for a simple Google Map
 			                // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
@@ -11,17 +12,17 @@
 			                    zoom: 13,
 
 			                    // The latitude and longitude to center the map (always required)
-			                    center: new google.maps.LatLng(53.4656616, -113.4842686),
-													
-													// Disable default map options 
+			                    center: new google.maps.LatLng(<%= @business.latitude %>, <%= @business.longitude %>),
+
+													// Disable default map options
 													disableDefaultUI: true,
 
-			                    // How you would like to style the map. 
+			                    // How you would like to style the map.
 			                    // This is where you would paste any style found on Snazzy Maps.
 			                    styles: [{"featureType":"water","stylers":[{"visibility":"on"},{"color":"#b5cbe4"}]},{"featureType":"landscape","stylers":[{"color":"#efefef"}]},{"featureType":"road.highway","elementType":"geometry","stylers":[{"color":"#83a5b0"}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#bdcdd3"}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#ffffff"}]},{"featureType":"poi.park","elementType":"geometry","stylers":[{"color":"#e3eed3"}]},{"featureType":"administrative","stylers":[{"visibility":"on"},{"lightness":33}]},{"featureType":"road"},{"featureType":"poi.park","elementType":"labels","stylers":[{"visibility":"on"},{"lightness":20}]},{},{"featureType":"road","stylers":[{"lightness":20}]}]
 			                };
 
-			                // Get the HTML DOM element that will contain your map 
+			                // Get the HTML DOM element that will contain your map
 			                // We are using a div with id="map" seen below in the <body>
 			                var mapElement = document.getElementById('map');
 
@@ -29,32 +30,31 @@
 			                var map = new google.maps.Map(mapElement, mapOptions);
 
 			                // Let's also add a marker while we're at it
-											var image = 'map_pin.png';
-			                var marker = new google.maps.Marker({
-			                    position: new google.maps.LatLng(53.4656616, -113.4842686),
+								var image = '<%= asset_path 'map_pin.png' %>';
+			                	var marker = new google.maps.Marker({
+			                    position: new google.maps.LatLng(<%= @business.latitude %>, <%= @business.longitude %>),
 			                    map: map,
-													icon: image,
-			                    title: 'Capital Jeep Dodge'
+								icon: image,
+			                    title: '<%= @business.name %>'
 			                });
 			            }
 			        </script>
-		</header>		
+		</header>
 
 		<h1 id="page_title"><%= @business.name %></h1>
-		
+
 		<div class="wrapper wrapper_padding business clearfix">
-			
+
 			<div class="col-1 contact_info business_content">
 				<%= image_tag @business.logo.url(:medium), :class => "business_logo" %>
 				<h3 class="location"><%= @business.address %></h3>
-				<h3 class="location"><%= @business.city %></h3><br>
 				Phone: <%= @business.phone %><br>
 				Email: <%= @business.email %><br>
 				Website: <%= link_to @business.url, "http://#{@business.url}" %><br>
 				<hr>
 				<input type="submit" value="&#9658; Our Latest Commercial" class="button">
 			</div>
-			
+
 			<div class="col-2 business_content">
 				<h2>About Us</h2>
 				<hr>
@@ -66,7 +66,7 @@
 					</div>
 				<% end %>
 			</div>
-			
+
 			<div class="col-3 search business_content">
 				<h2>Search For A Business</h2>
 				<hr>
@@ -77,7 +77,7 @@
 						<option value="value2">Automotive</option>
 					</select>
 				</form>
-				<form>	
+				<form>
 					<h6>Search Alphabetically</h6>
 					<select name='alphabet' id="alphabet">
 						<option value="value1">A</option>
@@ -115,9 +115,8 @@
 							<%= submit_tag ">", name: nil, class: "button" %>
 						</p>
 					<% end %>
-				
+
 			</div>
 		</div>
-	
+
 		<div id="map"></div>
-		  

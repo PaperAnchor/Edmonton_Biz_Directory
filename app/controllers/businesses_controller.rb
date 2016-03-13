@@ -52,7 +52,7 @@ class BusinessesController < ApplicationController
   private
 
   def post_params
-    params.require(:business).permit(:name, :address, :city, :postal, :email, :phone, :url, :description, :keywords, :logo, :audio, :slug, :category_id)
+    params.require(:business).permit(:name, :address, :city, :postal, :latitude, :longitude, :email, :phone, :url, :description, :keywords, :logo, :audio, :slug, :category_id)
   end
 
   def find_post
