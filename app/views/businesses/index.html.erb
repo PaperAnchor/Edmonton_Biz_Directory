@@ -1,3 +1,4 @@
+
 		<h2 id="page_title">Business Listings</h2>
 
 		<div class="wrapper wrapper_padding clearfix">
@@ -22,54 +23,32 @@
 
 
 
-			<div class="search_wrapper">
-			<h2>Search For A Business</h2>
-			<hr>
-			<form>
-				<h6>Search By Category</h6>
-				<select name='category' id="category">
-					<option value="value1">Apparel</option>
-					<option value="value2">Automotive</option>
-				</select>
-			</form>
-			<form>
-				<h6>Search Alphabetically</h6>
-				<select name='alphabet' id="alphabet">
-					<option value="value1">A</option>
-					<option value="value2">B</option>
-					<option value="value3">C</option>
-					<option value="value4">D</option>
-					<option value="value5">E</option>
-					<option value="value6">F</option>
-					<option value="value7">G</option>
-					<option value="value8">H</option>
-					<option value="value9">I</option>
-					<option value="value10">J</option>
-					<option value="value11">K</option>
-					<option value="value12">L</option>
-					<option value="value13">M</option>
-					<option value="value14">N</option>
-					<option value="value15">O</option>
-					<option value="value16">P</option>
-					<option value="value17">Q</option>
-					<option value="value18">R</option>
-					<option value="value19">S</option>
-					<option value="value20">T</option>
-					<option value="value21">U</option>
-					<option value="value22">V</option>
-					<option value="value23">W</option>
-					<option value="value24">X</option>
-					<option value="value25">Y</option>
-					<option value="value26">Z</option>
-				</select>
-				</form>
-				<h6>Search By Name</h6>
-				<%= form_tag search_businesses_path, method: :get, role: "search" do %>
-					<p>
-						<%= text_field_tag :search, params[:search], class: "form-control", :placeholder => 'Search Businesses' %>
-						<%= submit_tag ">", name: nil, class: "button" %>
+			<div class="side_content">
+				<div class="bigbox"><%= image_tag("bigBox.jpg", :alt => "Big Box") %></div>
+				<h1>Search For A Business</h1>
+				<hr>
+				<form class="search">
+					<p class="category">
+						<%= form_for :category do |f| %>
+							<%= f.label :category, "Search By Category" %><br>
+							<%= f.collection_select :category_id, Category.all.order('name ASC'), :id, :name %>
+							<%= button_tag(type: 'submit', class: "button") do %>
+								<i class="fa fa-arrow-right"></i>
+							<% end %>
+						<% end %>
+						</form>
+							<%= form_tag search_businesses_path, method: :get, role: "search", :class => "search" do %>
+								<%= label :category, "Search By Business Name" %>
+								<%= text_field_tag :search, params[:search], id: "search", :placeholder => 'Search Business' %>
+								<%= button_tag(type: 'submit', class: "button") do %>
+									<i class="fa fa-arrow-right"></i>
+								<% end %>
+							<% end %>
 					</p>
-				<% end %>
+				<h1>What Is The Biz Directory?</h1>
+				<hr>
+				<p>We know how it goes...you hear about a great business on the radio, but you can't quite catch their name or contact information. That's why we developed the Biz Directory!</p>
+				<p>This is a way for you to find out more about businesses with great stories, great product and great offers. You'll also find a quick and easy way to contact these places and more!</p>
+			</div>
 		</div>
 	</div>
-		</div>

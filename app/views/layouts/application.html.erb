@@ -11,7 +11,8 @@
 <body>
 <header id= "main_navigation" class="clearfix">
 	<div id="leftHeader">
-		<%= link_to image_tag('logo_biz.png'), root_path %>
+		<%= link_to image_tag('logo_biz.png'), root_path, :class => "main_logo" %>
+		<%= yield :logo %>
 	</div>
 	<div id="rightHeader">
 		<nav>
@@ -29,6 +30,7 @@
 			<% end %>
 			<li><%= link_to "Get In Contact", new_contact_path, class: "button" %></li>
 		</nav>
+		<%= yield :homeNav %>
 	</div>
 </header>
 
@@ -42,14 +44,9 @@
 
 <footer id="main_footer">
 	<p class="copyright">
-		&copy; 2016 Corus Entertainment  |  All Rights Reserved
+		<h6>Corus Radio</h6>
+		Copyright &copy; 2016  |  All Rights Reserved
 	</p>
-	<nav>
-		<a href="#"><i class="fa fa-facebook"></i></a>
-		<a href="#"><i class="fa fa-twitter"></i></a>
-		<a href="#"><i class="fa fa-instagram"></i></a>
-		<a href="#"><i class="fa fa-youtube-play"></i></a>
-	</nav>
 </footer>
 </body>
 </html>

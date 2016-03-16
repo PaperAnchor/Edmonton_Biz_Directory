@@ -1,76 +1,110 @@
-		<style>
-			body {
-				background-image: url(/assets/mainBG.jpg);
-				background-repeat: no-repeat;
-				background-position: top;
-				-ms-background-size: contain;
-				-o-background-size: contain;
-				-moz-background-size: contain;
-				-webkit-background-size: contain;
-				background-size: contain;
-			}
-		</style>
-		<div class="jumbotron">
-			<h1>HEAR SOMETHING YOU LIKED?</h1>
-			<h2>Find out more about our advertisers and get in contact with<br />
+<% content_for :logo do %>
+	<%= link_to image_tag('logo_biz_light.png'), root_path %>
+	<style>
+		body {
+			background-image: url(/assets/mainBG.jpg);
+			background-repeat: no-repeat;
+			background-position: top;
+			-ms-background-size: contain;
+			-o-background-size: contain;
+			-moz-background-size: contain;
+			-webkit-background-size: contain;
+			background-size: contain;
+		}
+		.main_logo {
+			display: none;
+		}
+		nav {
+			font-weight: 400!important;
+		}
+		nav ul li  a {
+			color: #fff!important;
+		}
+		nav ul li a:hover {
+			color: #2abda8!important;
+		}
+		nav .button:hover {
+			color: #fff!important;
+		}
+
+	</style>
+<% end %>
+
+
+
+<div class="jumbotron">
+	<h1>HEAR SOMETHING YOU LIKED?</h1>
+	<h2>Find out more about our advertisers and get in contact with<br />
 them fast with the Edmonton Business Directory!</h2>
-			<div class="header_search">
-				<form>
-					 <input type="input" name="businesssearch" id="search" placeholder="Search Our Listings By Business Name">
-					 <button type="submit"><i class="fa fa-search"></i></button>
-				</form>
-			</div>
-		</div>
-
-		<section id="content">
-            <div class="wrapper clearfix">
-
-            <div class="main_content">
-				<h1>Business Listings</h1>
-				<hr>
-				<% @businesses.each do |business| %>
-					<div class="category_listing clearfix">
-						<%= image_tag business.logo.url(:medium), :class => "listing_logo" %>
-						<div class="listing_description">
-							<h2><%= link_to business.name, business %></h2>
-							<p><%=h truncate(business.description, :length => 200, :separator => ' ') %></p>
-							<p><span class="contact_method"><strong>Phone:</strong> <%= business.phone %></span><span class="contact_method"><strong>Email:</strong> <%= business.email %></span>		<strong>Website:</strong> <%= link_to business.url, "http://#{business.url}" %></p>
-							<%= link_to "More Details", business, class: "button" %>
-						</div>
-					</div>
-					<br>
-					<hr class="hr_wide">
+	<div class="header_search">
+		<%= form_tag search_businesses_path, method: :get, role: "search" do %>
+			<p>
+				<%= text_field_tag :search, params[:search], id: "search", :placeholder => 'Search Our Listings By Business Name' %>
+				<%= button_tag(type: 'submit', class: "button") do %>
+					<i class="fa fa-search"></i>
 				<% end %>
+			</p>
+		<% end %>
+	</div>
+</div>
 
-            </div>
+<section id="content">
+    <div class="wrapper clearfix">
 
-            <div class="side_content">
-                <div class="bigbox"><%= image_tag("bigBox.jpg", :alt => "Big Box") %></div>
-                <h1>Search For A Business</h1>
-                <hr>
-                <form class="search">
-                    <p class="category">
-						<%= form_for :category do |f| %>
-							<%= f.label :category, "Search By Category" %><br>
-							<%= f.collection_select :category_id, Category.all, :id, :name %>
-							<br>
-							<br>
-							<%= f.label :name, "Search By Business Name" %><br>
-							<%= f.text_field :name, placeholder: "Type your search" %>
+    <div class="main_content">
+		<h1>Business Listings</h1>
+		<hr>
+		<% @businesses.shuffle.each do |business| %>
+			<div class="category_listing clearfix">
+				<%= image_tag business.logo.url(:medium), :class => "listing_logo" %>
+				<div class="listing_description">
+					<h2><%= link_to business.name, business %></h2>
+					<p><%=h truncate(business.description, :length => 200, :separator => ' ') %></p>
+					<p><span class="contact_method"><strong>Phone:</strong> <%= business.phone %></span><span class="contact_method"><strong>Email:</strong> <%= business.email %></span>		<strong>Website:</strong> <%= link_to business.url, "http://#{business.url}" %></p>
+					<%= link_to "More Details", business, class: "button" %>
+				</div>
+			</div>
+			<br>
+			<hr class="hr_wide">
+		<% end %>
+
+		<%= will_paginate @businesses %>
+
+    </div>
+
+    <div class="side_content">
+        <div class="bigbox"><%= image_tag("bigBox.jpg", :alt => "Big Box") %></div>
+        <h1>Search For A Business</h1>
+        <hr>
+        <form class="search">
+            <p class="category">
+				<%= form_for :category do |f| %>
+					<%= f.label :category, "Search By Category" %><br>
+					<%= f.collection_select :category_id, Category.all.order('name ASC'), :id, :name %>
+					<%= button_tag(type: 'submit', class: "button") do %>
+						<i class="fa fa-arrow-right"></i>
+					<% end %>
+				<% end %>
+				</form>
+					<%= form_tag search_businesses_path, method: :get, role: "search", :class => "search" do %>
+						<%= label :category, "Search By Business Name" %>
+						<%= text_field_tag :search, params[:search], id: "search", :placeholder => 'Search Business' %>
+						<%= button_tag(type: 'submit', class: "button") do %>
+							<i class="fa fa-arrow-right"></i>
 						<% end %>
-                    </p>
-                </form>
-                <h1>What Is The Biz Directory?</h1>
-                <hr>
-                <p>We know how it goes...you hear about a great business on the radio, but you can't quite catch their name or contact information. That's why we developed the Biz Directory!</p>
-                <p>This is a way for you to find out more about businesses with great stories, great product and great offers. You'll also find a quick and easy way to contact these places and more!</p>
-                <ul class="station_logos">
-                    <li><%= link_to image_tag("logo_cisn.png", :alt => "CISN Country 103.9") %></li>
-                    <li><a href="http://www.630ched.com" target="_blank"><%= image_tag("logo_ched.png", :alt => "630 CHED") %></a></li>
-                    <li><a href="http://www.925freshradio.ca" target="_blank"><%= image_tag("logo_fresh.png", :alt => "925 Fresh Radio") %></a></li>
-                    <li><a href="http://www.inews880.com" target="_blank"><%= image_tag("logo_chqt.png", :alt => "iNews 880") %></a></li>
-                </ul>
-            </div>
+					<% end %>
+            </p>
+        <h1>What Is The Biz Directory?</h1>
+        <hr>
+        <p>We know how it goes...you hear about a great business on the radio, but you can't quite catch their name or contact information. That's why we developed the Biz Directory!</p>
+        <p>This is a way for you to find out more about businesses with great stories, great product and great offers. You'll also find a quick and easy way to contact these places and more!</p>
+        <ul class="station_logos">
+            <li><%= link_to image_tag("logo_cisn.png", :alt => "CISN Country 103.9") %></li>
+            <li><a href="http://www.630ched.com" target="_blank"><%= image_tag("logo_ched.png", :alt => "630 CHED") %></a></li>
+            <li><a href="http://www.925freshradio.ca" target="_blank"><%= image_tag("logo_fresh.png", :alt => "925 Fresh Radio") %></a></li>
+            <li><a href="http://www.inews880.com" target="_blank"><%= image_tag("logo_chqt.png", :alt => "iNews 880") %></a></li>
+        </ul>
+    </div>
 
-            </div>
-        </section>
+    </div>
+</section>

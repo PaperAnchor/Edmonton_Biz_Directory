@@ -1,3 +1,11 @@
+.categoryListing {
+    color: $highlight;
+	font-size: 1.3rem;
+	text-decoration: none;
+    &:hover {
+        color: $dark;
+    }
+}
 
 .category_wrapper {
 	width: 75%;

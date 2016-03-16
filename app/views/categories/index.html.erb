@@ -2,5 +2,12 @@
 
 <div class="skinny_wrapper wrapper_padding">
 	<%= render 'form' %>
+</div>
 
+<h2 id="page_title">Edit A Category</h2>
+
+<div class="skinny_wrapper wrapper_padding">
+	<% @categories.each do |category| %>
+		<h2><%= link_to category.name, category, :class => "categoryListing" %></h2>
+	<% end %>
 </div>

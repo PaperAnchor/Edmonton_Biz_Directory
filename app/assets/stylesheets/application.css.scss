@@ -15,7 +15,6 @@ $border: #e9e9e9;
 
 body {
 	font-family: 'Raleway', sans-serif;
-	background-color: $extralight;
 }
 
 hr {
@@ -112,6 +111,7 @@ p, ul, ol {
 		nav {
 			float: left;
 			padding-top: 1.1rem;
+			font-weight: 500;
 			ul {
 				position:relative;
 				li {
@@ -119,9 +119,9 @@ p, ul, ol {
 					display: inline;
 					position:relative;
 					a {
-						color: $white;
+						color: $brown;
 						text-decoration: none;
-						margin: 0 1rem;
+						margin: 0 1.7rem;
 						font-size: .85rem;
 						&:hover {
 							color: $highlight;
@@ -158,6 +158,7 @@ p, ul, ol {
 		}
 		.button {
 	        background-color: $highlight;
+			color: $white;
 	        border: none;
 	        outline: none;
 	        border-radius: 2rem;
@@ -187,31 +188,16 @@ p, ul, ol {
 }
 
 #main_footer {
-	padding: 2.5em 7% 3.5em 7%;
+	padding: 2.5em 7% 1.5em 7%;
 	border-top: 1px solid $border;
+	text-align: center;
 	.copyright {
-		float: left;
 		font-size: .9em;
 		margin: 0;
 	}
-	nav {
-		float: right;
-		i {
-			color: $dark;
-			margin-left: 1.5em;
-			padding-top: .2em;
-			&:hover {
-				color: $highlight;
-			}
-		}
-		.login {
-			margin-left: 2em;
-			color: $dark;
-			text-decoration: none;
-			&:hover {
-				color: $highlight;
-			}
-		}
+	h6 {
+		margin: 0 0 10px 0;
+		text-transform: uppercase;
 	}
 }
 .skinny_wrapper {
@@ -314,6 +300,23 @@ p, ul, ol {
     cursor:pointer;
     -webkit-border-radius: 5px;
 		margin-left: -37px;
+	}
+}
+
+@media screen and (max-width: 1115px) {
+    #leftHeader {
+		float: none!important;
+		text-align: center;
+	}
+	#rightHeader {
+		float: none!important;
+	}
+	#main_navigation #rightHeader nav {
+		float:none!important;
+		text-align: center;
+	}
+	.jumbotron {
+		padding: 0 0 40px 0 !important;
 	}
 }
 

@@ -1,7 +1,8 @@
 class CategoriesController < ApplicationController
     before_action :find_category, only: [:show, :edit, :update, :destroy]
+
     def index
-        @categories = Category.all.order('name ASC')
+        @categories = Category.order('name ASC')
     end
 
     def new
@@ -10,9 +11,10 @@ class CategoriesController < ApplicationController
 
     def create
         @category = Category.new post_params
+        @categories = Category.order('name ASC')
 
         if @category.save
-            redirect_to @category, notice: "Your Category has been saved!"
+            redirect_to categories_path, notice: "Your Category has been saved!"
         else
             render 'new', notice: "There was an error while trying to create your category!"
         end
@@ -24,6 +26,7 @@ class CategoriesController < ApplicationController
     end
 
     def edit
+        category = Category.find(params[:id])
     end
 
     def update
